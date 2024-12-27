@@ -1,0 +1,8 @@
+<h1>Test App</h1>
+{% for t in test %}
+<a href="{% url 'test-detail' pk=t.pk %}">{{ t.name }}</a>
+<br>{{ t.age }}
+<br>{{ t.job }}
+<a></a>
+<p>------------------------------</p>
+{% endfor%}

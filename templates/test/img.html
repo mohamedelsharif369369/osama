@@ -1,0 +1,15 @@
+<h1>Image Page</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ img_form }}
+    <input type="submit" value="Save">
+</form>
+<div>
+{% for i in img %}
+<img src="{{ i.img.url }}" alt="Uploaded Images" style="width: 200px; height: 200px;">
+<br>{{ i.date }}
+<a href="{% url 'edit-img' pk=i.pk %}">Update</a>
+<a href="{% url 'delete-img' pk=i.pk %}">Delete</a>
+{% endfor %}
+
+</div>

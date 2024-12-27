@@ -1,0 +1,40 @@
+
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><br><br>
+<div class="container my-5">
+    <h1 class="tm-text-primary mb-4">حسابي </h1>
+    <br>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-4 mb-4">
+            {{ hesabi_form|crispy }}
+        </div>
+        <br><br>
+        <div class="col-md-4 mb-4">
+        <button type="submit">أحفظ</button>
+        </div>
+    </form>
+    <br><br>
+    </div>
+    <div class="container my-5">
+        <div class="row">
+            {% for h in hesabi %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body" style="background: #222222; color: white;">
+                        <h4>مصروفى : {{ h.price }}</h4>
+                        <h4>يوم :  {{ h.day }}</h4>
+                        <h4>الموافق :  {{ h.at }}</h4>
+                        <h4>الشهر : {{ h.month }}</h4>
+                        <a href="{% url 'edit-hesabi' pk=h.pk %}" class="btn btn-primary">تعديل</a>
+                        <a href="{% url 'delete-hesabi' pk=h.pk %}" class="btn btn-primary">حذف</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}

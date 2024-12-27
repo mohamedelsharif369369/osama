@@ -1,0 +1,37 @@
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><br><br>
+<div class="container my-5">
+    <h1 class="tm-text-primary mb-4">بضائع نورسين </h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-4 mb-4">
+            {{ product_form|crispy }}
+        </div>
+        <div class="col-md-4 mb-4">
+        <button type="submit">أحفظ</button>
+        </div>
+    </form>
+    <br><br><br>
+    </div>
+    <div class="container my-5">
+        <div class="row">
+            {% for p in product %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body" style="background: #222222; color: white;">
+                        <h4>المنتج : {{ p.name }}</h4>
+                        <h4>سعر البيع : {{ p.price }}</h4>
+                        <h4>سعر الشراء : {{ p.buing }}</h4>
+                        <h4>الكميه : {{ p.quantity }}</h4>
+                        <a href="{% url 'edit-products' pk=p.pk %}" class="btn btn-primary">تعديل</a>
+                        <a href="{% url 'delete-products' pk=p.pk %}" class="btn btn-primary">حذف</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+<br>
+{% endblock content %}

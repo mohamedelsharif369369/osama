@@ -1,0 +1,6 @@
+<h1>Test Detail</h1>
+{{ test.name }}
+<br>{{ test.age }}
+<br>{{ test.job }}
+<br><a href="{% url 'test-update' pk=test.pk %}">Update</a>
+<br><a href="{% url 'test-delete' pk=test.pk %}">Delete</a>

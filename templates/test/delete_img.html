@@ -1,0 +1,7 @@
+<h1>Delete Img</h1>
+<form method="POST">
+    {% csrf_token %}
+    <p>Are You Sure Want To Delete This Image {{ object }}</p>
+    <input type="submit" value="yes">
+    <a href="{% url 'img' %}">No</a>
+</form>

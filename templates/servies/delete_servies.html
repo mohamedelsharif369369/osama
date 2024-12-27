@@ -1,0 +1,30 @@
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><br><br><br><br><br><br><br><br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="col-md-4 mb-4">
+              <h4>هل تريد بالفعل حذف هذه الخدمه ؟</h4>
+              <br><br><br><h3>{{ object }}</h3></p>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-4 mb-4">
+                        {{ edit_form|crispy }}
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <button type="submit">نعم أحذف</button>
+                        <br><br><br>
+                        <a href="{% url 'servies' %}">لا تحذف</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br>
+{% endblock content %}

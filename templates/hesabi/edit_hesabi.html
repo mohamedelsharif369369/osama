@@ -1,0 +1,28 @@
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <h1>تعديل </h1>
+        
+        <div class="col">
+            <br>
+            <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="card-body">
+                    <div class="col-md-4 mb-4">
+                        {{ edit_form|crispy }}
+                    </div>
+                    <br><br><br>
+                    <div class="col-md-4 mb-4">
+                        <button type="submit">تعديل</button>
+                        <a href="{% url 'hesabi' %}">رجوع </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock content %}

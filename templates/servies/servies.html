@@ -1,0 +1,40 @@
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-5">
+    <h1 class="tm-text-primary mb-4">الخدمات </h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-4 mb-4">
+            {{ servie_form|crispy }}
+        </div>
+        <div class="col-md-4 mb-4">
+        <button type="submit">أحفظ</button>
+        </div>
+    </form>
+</div>
+<div class="container my-5">
+    <div class="row">
+        {% for s in servie %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body" style="background: #222222; color: white;">
+                    <h4>العميل : {{ s.name }}</h4>
+                    <h4>الخدمه : {{ s.servies }}</h4>
+                    <h4>السعر : {{ s.price }}</h4>
+                    <h4>مدفوع : {{ s.paid }}</h4>
+                    <h4> بتاريخ : {{ s.paid_at }}</h4>
+                    <h4> متبقى : {{ s.rest }}</h4>
+                    <h4>التسليم فى : {{ s.delivery_time }}</h4>
+                    <h4>الهاتف : {{ s.phone }}</h4>
+                    <h4>الحاله : {{ s.tslem }}</h4>
+                    <a href="{% url 'edit-servies' pk=s.pk %}" class="btn btn-primary">تعديل</a>
+                    <a href="{% url 'delete-servies' pk=s.pk %}" class="btn btn-primary">حذف</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+{% endblock content %}

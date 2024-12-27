@@ -1,0 +1,25 @@
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="col-md-4 mb-4">
+                    <p>هل تريد بالفعل حذف هذا العنصر<h3>{{ object }}</h3></p>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-4 mb-4">
+                        {{ edit_form|crispy }}
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <button type="submit">نعم أحذف</button>
+                        <a href="{% url 'yaomia' %}">لا تحذف</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
